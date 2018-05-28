@@ -4,8 +4,10 @@
   "description": "Quizzy",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon ./index.js --exec babel-node --presets babel-preset-env"
+    "babel-node": "babel-node --presets=env",
+    "start": "nodemon --exec npm run babel-node -- ./index.js",
+    "test": "mocha --require babel-core/register --recursive ./tests/",
+    "prod": "npm run babel-node -- ./index.js"
   },
   "author": "Bruno Ferreira",
   "license": "ISC",
@@ -25,7 +27,10 @@
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
-    "nodemon": "^1.14.12"
+    "babel-preset-env": "^1.7.0",
+    "chai": "^4.1.2",
+    "chai-http": "^4.0.0",
+    "mocha": "^5.2.0",
+    "nodemon": "^1.17.4"
   }
 }
